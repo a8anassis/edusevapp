@@ -25,11 +25,11 @@ public class Teacher extends AbstractEntity {
     private Boolean isActive;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "user_id", nullable = false, unique = true)
     private User user;
 
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "personal_info_id")
+    @JoinColumn(name = "personal_info_id", unique = true)
     private PersonalInfo personalInfo;
 
     @PrePersist

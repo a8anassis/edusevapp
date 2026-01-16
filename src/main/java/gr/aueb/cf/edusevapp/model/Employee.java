@@ -23,7 +23,7 @@ public class Employee extends AbstractEntity {
     private String uuid;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", unique = true)
     private User user;
 
     @Getter(AccessLevel.PROTECTED)
@@ -38,15 +38,15 @@ public class Employee extends AbstractEntity {
         return Collections.unmodifiableSet(eduUnits);
     }
 
-    public void addEducationalUnit(EducationalUnit educationalUnit) {
-        if (eduUnits == null) eduUnits = new HashSet<>();
-        eduUnits.add(educationalUnit);
-    }
-
-    public void removeEducationalUnit(EducationalUnit educationalUnit) {
-        eduUnits.remove(educationalUnit);
-        educationalUnit.getEmployees().remove(this);
-    }
+//    public void addEducationalUnit(EducationalUnit educationalUnit) {
+//        if (eduUnits == null) eduUnits = new HashSet<>();
+//        eduUnits.add(educationalUnit);
+//    }
+//
+//    public void removeEducationalUnit(EducationalUnit educationalUnit) {
+//        eduUnits.remove(educationalUnit);
+//        educationalUnit.getEmployees().remove(this);
+//    }
 
     public boolean hasEducationalUnits(){
         return eduUnits != null && !eduUnits.isEmpty();
